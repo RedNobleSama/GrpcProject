@@ -1,0 +1,66 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+option go_package = "../";
+
+// 定义用户接口
+service User {
+  rpc GetUserList(PageInfo) returns (UserListResponse); // 用户列表
+  rpc GetUserbyMobile(MobileRequest) returns (UserInfoResponse); // 通过Mobile查询用户
+  rpc GetUserbyId(IdRequest) returns (UserInfoResponse); // 通过Id查询用户
+  rpc CreateUser(CreateUserInfo) returns (UserInfoResponse); // 创建用户
+  rpc UpdateUser(UpdateUserInfo) returns (google.protobuf.Empty); // 更新用户
+  rpc CheckUserPassword(PasswordInfo) returns (CheckResponse); //检查密码
+}
+
+message PageInfo {
+  int64 pNum = 1;
+  int64 pSize = 2;
+}
+
+message UserInfoResponse {
+  int64 id = 1;
+  string name = 2;
+  string mobile = 3;
+  string nickName = 4;
+  int64 birthday= 5;
+  string gender = 6;
+  int64 role = 7;
+}
+
+message UserListResponse {
+  int64 total = 1;
+  repeated UserInfoResponse data = 2;
+}
+
+message MobileRequest {
+  string mobile = 1;
+}
+
+message IdRequest {
+  int64 id = 1;
+}
+
+message CreateUserInfo {
+  string nickName = 1;
+  string password = 2;
+  string mobile = 3;
+}
+
+message UpdateUserInfo {
+  int64 id = 1;
+  string name = 2;
+  string mobile = 3;
+  string nickName = 4;
+  int64 birthday= 5;
+  string gender = 6;
+  int64 role = 7;
+}
+
+message PasswordInfo {
+  string password = 1;
+  string encrpytedPassword = 2;
+}
+
+message CheckResponse {
+  bool success = 1;
+}
