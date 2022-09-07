@@ -38,9 +38,9 @@ func ConsulInit() (*api.Client, string) {
 	// 生成对应的健康检查
 	check := &api.AgentServiceCheck{
 		HTTP:                           "http://127.0.0.1:50052/health",
-		Timeout:                        "60s",
-		Interval:                       "60s",
-		DeregisterCriticalServiceAfter: "120s",
+		Timeout:                        "5s",
+		Interval:                       "5s",
+		DeregisterCriticalServiceAfter: "10s",
 	}
 	reginstration.Check = check
 

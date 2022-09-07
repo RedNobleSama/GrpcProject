@@ -30,7 +30,7 @@ func ConsulInit(server *grpc.Server) (*api.Client, string) {
 		panic(err.Error())
 	}
 	check := &api.AgentServiceCheck{
-		GRPC:                           fmt.Sprintf("127.0.0.1:%d", 50051),
+		GRPC:                           fmt.Sprintf("192.168.1.10:%d", 50051),
 		Timeout:                        "5s",
 		Interval:                       "5s",
 		DeregisterCriticalServiceAfter: "10s",
@@ -42,7 +42,7 @@ func ConsulInit(server *grpc.Server) (*api.Client, string) {
 	reginstration.ID = serviceID
 	reginstration.Port = 50051
 	reginstration.Tags = []string{"grpc", "srv", "user"}
-	reginstration.Address = "127.0.0.1"
+	reginstration.Address = "192.168.1.10"
 	reginstration.Check = check
 
 	err = client.Agent().ServiceRegister(reginstration)

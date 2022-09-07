@@ -9,6 +9,7 @@ package api
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
+	"goods_api/global/utils"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"net/http"
@@ -62,7 +63,7 @@ func HandleValidatorError(c *gin.Context, err error) {
 		})
 	}
 	c.JSON(http.StatusBadRequest, gin.H{
-		"error": RemoveTopStruct(errs.Translate(global.Trans)),
+		"error": RemoveTopStruct(errs.Translate(utils.Trans)),
 	})
 	return
 }
