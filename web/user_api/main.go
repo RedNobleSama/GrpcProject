@@ -17,7 +17,7 @@ import (
 )
 
 func main() {
-	IP := flag.String("ip", "0.0.0.0", "ip地址")
+	IP := flag.String("ip", "192.168.100.166", "ip地址")
 	PORT := flag.String("port", "50052", "端口号")
 	flag.Parse()
 

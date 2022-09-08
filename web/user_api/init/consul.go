@@ -33,11 +33,11 @@ func ConsulInit() (*api.Client, string) {
 	reginstration.ID = serviceID
 	reginstration.Port = 50052
 	reginstration.Tags = []string{"grpc", "api", "user"}
-	reginstration.Address = "127.0.0.1"
+	reginstration.Address = "192.168.100.166"
 
 	// 生成对应的健康检查
 	check := &api.AgentServiceCheck{
-		HTTP:                           "http://127.0.0.1:50052/health",
+		HTTP:                           "http://192.168.100.166:50052/health",
 		Timeout:                        "5s",
 		Interval:                       "5s",
 		DeregisterCriticalServiceAfter: "10s",
