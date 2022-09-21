@@ -19,7 +19,7 @@ func ServerInit() (net.Listener, *grpc.Server) {
 	zap.S().Info("init server")
 	server := grpc.NewServer()
 	in.RegisterGoodsServer(server, &controller.GoodsServer{})
-	lis, err := net.Listen("tcp", fmt.Sprintf("%s:%d", "127.0.0.1", 50053))
+	lis, err := net.Listen("tcp", fmt.Sprintf("%s:%d", "192.168.100.166", 50053))
 	if err != nil {
 		zap.S().Errorw("failed to listen:", err.Error())
 		panic("failed to listen: " + err.Error())
