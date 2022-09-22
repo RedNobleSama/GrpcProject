@@ -10,7 +10,7 @@ import (
 	"context"
 	"fmt"
 	"google.golang.org/grpc"
-	in "srv/inventory_srv/rpc"
+	in "inventory_srv/interface"
 	"sync"
 )
 

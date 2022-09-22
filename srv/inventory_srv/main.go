@@ -8,9 +8,9 @@ package main
 
 import (
 	"fmt"
+	initialize "inventory_srv/init"
 	"os"
 	"os/signal"
-	initialize "srv/inventory_srv/init"
 	"syscall"
 )
 

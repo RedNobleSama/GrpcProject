@@ -10,7 +10,7 @@ import (
 	"fmt"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
-	"srv/inventory_srv/global/utils"
+	"inventory_srv/global/utils"
 )
 
 func NewLogger() (*zap.Logger, error) {
@@ -19,7 +19,7 @@ func NewLogger() (*zap.Logger, error) {
 	cfg.EncoderConfig.EncodeTime = zapcore.ISO8601TimeEncoder // 时间格式
 	cfg.EncoderConfig.TimeKey = "time"                        // 时间key
 	cfg.OutputPaths = []string{
-		fmt.Sprintf("./inventory_srv/log/%s.log", timeNow), // 日志文件路径
+		fmt.Sprintf("./log/%s.log", timeNow), // 日志文件路径
 		"stdout",
 	}
 	return cfg.Build()

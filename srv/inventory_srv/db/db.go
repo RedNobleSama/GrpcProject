@@ -11,9 +11,9 @@ import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 	"gorm.io/gorm/schema"
+	"inventory_srv/model"
 	"log"
 	"os"
-	"srv/inventory_srv/model"
 	"time"
 )
 

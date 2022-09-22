@@ -10,9 +10,9 @@ import (
 	"fmt"
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
+	"inventory_srv/controller"
+	in "inventory_srv/interface"
 	"net"
-	"srv/inventory_srv/controller"
-	in "srv/inventory_srv/rpc"
 )
 
 func ServerInit() (net.Listener, *grpc.Server) {

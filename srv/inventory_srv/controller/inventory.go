@@ -13,9 +13,9 @@ import (
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/types/known/emptypb"
 	"gorm.io/gorm/clause"
-	"srv/inventory_srv/db"
-	"srv/inventory_srv/model"
-	in "srv/inventory_srv/rpc"
+	"inventory_srv/db"
+	in "inventory_srv/interface"
+	"inventory_srv/model"
 )
 
 type InventoryServer struct {
