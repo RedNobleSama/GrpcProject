@@ -12,8 +12,8 @@ import (
 	"gorm.io/gorm/logger"
 	"gorm.io/gorm/schema"
 	"log"
+	"order_srv/model"
 	"os"
-	"srv/user_srv/model"
 	"time"
 )
 
@@ -23,7 +23,7 @@ var (
 
 func init() {
 
-	dsn := "root:root@tcp(42.192.220.243:3306)/gp_user_srv?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root:Aa123456@tcp(127.0.0.1:3306)/gp_user_srv?charset=utf8mb4&parseTime=True&loc=Local"
 
 	newLogger := logger.New(
 		log.New(os.Stdout, "\r\n", log.LstdFlags), // io writer
@@ -61,5 +61,6 @@ func init() {
 
 	//定义一个表结构， 将表结构直接生成对应的表 - migrations
 	// 迁移 schema
-	_ = DB.AutoMigrate(&model.User{}) //此处应该有sql语句
+	_ = DB.AutoMigrate(&model.ShoppingCart{}, &model.OrderInfo{}, &model.OrderGoods{})
+	//此处应该有sql语句
 }

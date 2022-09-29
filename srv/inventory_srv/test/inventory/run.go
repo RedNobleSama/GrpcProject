@@ -88,6 +88,14 @@ func main() {
 
 	//TestInvDetail(421)
 
+	//var wg sync.WaitGroup
+	//wg.Add(20)
+	//for i := 0; i < 20; i++ {
+	//	go TestSell(&wg)
+	//}
+	//
+	//wg.Wait()
+	//并发情况之下 库存无法正确的扣减
 	var wg sync.WaitGroup
 	wg.Add(20)
 	for i := 0; i < 20; i++ {
@@ -95,14 +103,6 @@ func main() {
 	}
 
 	wg.Wait()
-	//并发情况之下 库存无法正确的扣减
-	//var wg sync.WaitGroup
-	//wg.Add(20)
-	//for i := 0; i<20; i++ {
-	//	go TestSell(&wg)
-	//}
-	//
-	//wg.Wait()
 	//
 	////TestInvDetail(421)
 	////TestSell()
