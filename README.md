@@ -18,3 +18,5 @@ go build
 将bin/protoc-gen-go加入环境变量
 
 将下载的对应goprotobuf支持库 放到gopath/src下面
+
+CN:16
