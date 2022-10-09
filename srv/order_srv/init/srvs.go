@@ -11,12 +11,8 @@ import (
 	"github.com/hashicorp/consul/api"
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
+	"order_srv/global"
 	in "order_srv/interface"
-)
-
-var (
-	GoodsSrvClient     in.GoodsClient
-	InventorySrvClient in.InventoryClient
 )
 
 // GetFromConsul 从注册中心获取用户服务的信息
@@ -70,7 +66,7 @@ func InitSrvClient() {
 		return
 	}
 	// 调用接口
-	GoodsSrvClient = in.NewGoodsClient(goodsConn)
+	global.GoodsSrvClient = in.NewGoodsClient(goodsConn)
 	// 将用户服务客户端对象赋值给全局变量
 
 	inventoryConn, err := grpc.Dial(
@@ -83,6 +79,6 @@ func InitSrvClient() {
 		return
 	}
 	// 调用接口
-	InventorySrvClient = in.NewInventoryClient(inventoryConn)
+	global.InventorySrvClient = in.NewInventoryClient(inventoryConn)
 	// 将用户服务客户端对象赋值给全局变量
 }

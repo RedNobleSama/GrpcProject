@@ -17,9 +17,8 @@ import (
 func main() {
 	initialize.LoggerInit() //初始化日志
 
-	listen, server := initialize.ServerInit() // 初始化rpc服务
-	initialize.GoodsSrvClient()               // 连接外部微服务
-	initialize.InventorySrvClient()
+	listen, server := initialize.ServerInit()                // 初始化rpc服务
+	initialize.InitSrvClient()                               // 连接外部微服务
 	ConsulClient, serviceID := initialize.ConsulInit(server) //初始化consul,注册服务
 
 	go func() {

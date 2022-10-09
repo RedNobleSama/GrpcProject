@@ -15,7 +15,7 @@ import (
 	"google.golang.org/protobuf/types/known/emptypb"
 	"math/rand"
 	"order_srv/db"
-	"order_srv/init"
+	"order_srv/global"
 	in "order_srv/interface"
 	"order_srv/model"
 	"time"
@@ -223,7 +223,7 @@ func (*OrderServer) CreateOrder(ctx context.Context, req *in.OrderRequest) (*in.
 	}
 
 	// 跨服务调用商品微服务
-	goods, err := init.GoodsSrvClient.BatchGetGoods(context.Background(), &in.BatchGoodsIdInfo{
+	goods, err := global.GoodsSrvClient.BatchGetGoods(context.Background(), &in.BatchGoodsIdInfo{
 		Id: goodsIds,
 	})
 	if err != nil {
@@ -249,7 +249,7 @@ func (*OrderServer) CreateOrder(ctx context.Context, req *in.OrderRequest) (*in.
 	}
 
 	// 跨服务调用库存微服务进行库存扣减
-	_, err = init.InventorySrvClient.Sell(context.Background(), &in.SellInfo{GoodsInfo: goodsInvInfo})
+	_, err = global.InventorySrvClient.Sell(context.Background(), &in.SellInfo{GoodsInfo: goodsInvInfo})
 	if err != nil {
 		return nil, status.Errorf(codes.ResourceExhausted, "扣减库存失败")
 	}
